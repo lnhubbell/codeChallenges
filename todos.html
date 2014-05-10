@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+         button.link { background:none;border:none; }
+        </style>
+    </head>
+
+
+    <script>
+    var lengthOfList = 5
+
+    function addToList() {
+        var question = prompt("What would you like to do");
+        for (var i = 1; i <= lengthOfList; i++) {
+            if (document.getElementById('Thing' + i).innerHTML === "") {
+                document.getElementById('Thing' + i).innerHTML = question;
+                break;
+            }
+            if ( i === lengthOfList){
+                alert("No more room, get something done!");
+                break;
+            }
+        }
+    }
+
+
+    function removeFromList(i) {
+        for (var ind = i; ind < lengthOfList; ind++) {
+            if (document.getElementById('Thing' + ind).innerHTML !== "") {
+                document.getElementById('Thing' + ind).innerHTML = document.getElementById('Thing' + (ind + 1)).innerHTML;
+            } else {
+                break;
+            }
+        }
+        document.getElementById('Thing5').innerHTML = "";
+    }
+    </script>
+
+
+    <body>
+        <h1> This is Your To Do Manager! </h1>
+        <form>
+            <input type="button" onclick="addToList()" value="Add ToDo">
+        </form>
+        <ol>
+            <li><button onclick= removeFromList(1) id="Thing1" class="link"></button></li>
+            <li><button onclick= removeFromList(2) id="Thing2" class="link"></button></li>
+            <li><button onclick= removeFromList(3) id="Thing3" class="link"></button></li>
+            <li><button onclick= removeFromList(4) id="Thing4" class="link"></button></li>
+            <li><button onclick= removeFromList(5) id="Thing5" class="link"></button></li>
+        </ol>
+    </body>
+</html>
